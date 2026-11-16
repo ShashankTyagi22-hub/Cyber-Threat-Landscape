@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+new Chart(document.getElementById("severityChart"), {
+type: "pie",
+data: {
+labels: [
+"Low",
+"Medium",
+"High",
+"Critical"
+],
+datasets: [{
+data: [2, 4, 6, 3],
+backgroundColor: [
+"green",
+"orange",
+"red",
+"purple"
+]
+}]
+}
+});
+</script>
+
+</head>
+
+<body>
+
+<div class="nav">
+    <h1>Cyber Threat Dashboard</h1>
+</div>
+
+<div class="cards">
+
+    <div class="card">
+        <h2>5</h2>
+        <p>Total Threats</p>
+    </div>
+
+    <div class="card">
+        <h2>2</h2>
+        <p>Critical Threats</p>
+    </div>
+
+    <div class="card">
+        <h2>89%</h2>
+        <p>Security Score</p>
+    </div>
+
+    <div class="card">
+        <h2>14</h2>
+        <p>Active Incidents</p>
+    </div>
+
+</div>
+
+<div class="records-section">
+<h2 class="section-title">Threat Records</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Threat</th>
+            <th>Severity</th>
+            <th>Source IP</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+
+    <tbody id="threatTableBody">
+    </tbody>
+
+</table>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

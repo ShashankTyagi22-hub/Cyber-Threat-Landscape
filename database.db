@@ -1,0 +1,33 @@
+import sqlite3
+
+conn = sqlite3.connect("database.db")
+cursor = conn.cursor()
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS threats(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+threat_name TEXT,
+severity TEXT,
+source_ip TEXT,
+date TEXT
+)
+""")
+
+sample_data = [
+("Phishing Campaign","High","192.168.1.10","2026-01-01"),
+("Malware Infection","Critical","172.16.1.5","2026-01-03"),
+("Brute Force","Medium","10.0.0.7","2026-01-05"),
+("DDoS Attack","Critical","45.34.21.10","2026-01-07")
+]
+
+cursor.executemany("""
+INSERT INTO threats(
+threat_name,severity,
+source_ip,date)
+VALUES(?,?,?,?)
+""",sample_data)
+
+conn.commit()
+conn.close()
+
+print("Database Created")
